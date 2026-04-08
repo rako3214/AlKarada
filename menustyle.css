@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'MalintonMedium';
+    src: url('fonts/MalintonTrialVersion-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MalintonBlack';
+    src: url('fonts/MalintonTrialVersion-Black.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'InterVariable';
+    src: url('fonts/Inter-VariableFont.ttf');
+    font-weight: 100 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GaliModern';
+    src: url('fonts/alfont_com_AlFont_com_gali-modern-medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inter18ptBlack';
+    src: url('fonts/Inter_18pt-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NRTReg';
+    src: url('fonts/NRT-Reg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f1de;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #f7f1de;
+    overflow: auto;
+    padding-top: 80px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;            
+}
+
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    background: #753D37;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+div.scrollmenu {
+    background-color: #753D37;
+    overflow: auto;
+    white-space: nowrap;
+    font-family: 'Inter18ptBlack', sans-serif;
+    scroll-behavior: smooth;
+    scrollbar-width: none;   
+    -ms-overflow-style: none;
+    text-align: center;
+}
+
+div.scrollmenu.scrollmenu-ar {
+    font-family: 'NRTReg', sans-serif;
+    font-size: 18px;
+    direction: rtl;
+}
+
+div.scrollmenu.scrollmenu-ar a {
+    font-family: 'NRTReg', sans-serif;
+}
+
+div.scrollmenu.scrollmenu-ku {
+    font-family: 'NRTReg', sans-serif;
+    font-size: 18px;
+    direction: rtl;
+}
+
+div.scrollmenu.scrollmenu-ku a {
+    font-family: 'NRTReg', sans-serif;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    background-color: #753D37;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.3s, background 0.3s;
+}
+
+div.scrollmenu a.active {
+    opacity: 1;
+    color: #fff;
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+section:last-of-type {
+    padding-bottom: 80px;
+}
+
+.menu-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background: #f7f1de;
+    border: none;
+    box-shadow: none;
+}
+
+section {
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+    border: none;
+    line-height: 0;
+}
+
+
+

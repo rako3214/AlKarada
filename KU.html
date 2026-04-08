@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="menustyle.css">
+  <title>Alkarada Menu</title>
+</head>
+<body>
+
+  <nav class="top-navbar">
+    <div class="scrollmenu scrollmenu-ku">
+      <a href="#karada-cup">کوپی كەڕادە</a>
+      <a href="#chips">چـپـس</a>
+      <a href="#drinks">خواردنەوه</a>
+    </div>
+  </nav>
+
+  <section id="karada-cup">
+    <img src="img/KU/karada_cup_ku.webp?v=20260408" alt="Karada Cup" class="menu-image">
+  </section>
+  <section id="chips">
+    <img src="img/KU/chips_ku.webp?v=20260408" alt="Chips" class="menu-image">
+  </section>
+  <section id="drinks">
+    <img src="img/KU/drinks_ku.webp?v=20260408" alt="Drinks" class="menu-image">
+  </section>
+ 
+  
+
+  <!-- Designed and Developed by Rako & Nwar-->
+  <script>
+  let manualNavClick = false;
+  let manualNavTimeout;
+
+  function centerNavItem(link) {
+    const scrollmenu = document.querySelector('.scrollmenu');
+    const linkRect = link.getBoundingClientRect();
+    const menuRect = scrollmenu.getBoundingClientRect();
+    const scrollLeft = scrollmenu.scrollLeft;
+    const offset = linkRect.left - menuRect.left - (menuRect.width / 2) + (linkRect.width / 2);
+    scrollmenu.scrollTo({ left: scrollLeft + offset, behavior: 'smooth' });
+  }
+
+  function setActiveNav(sectionId) {
+    document.querySelectorAll('.scrollmenu a').forEach(link => {
+      if (link.getAttribute('href').substring(1) === sectionId) {
+        link.classList.add('active');
+        centerNavItem(link);
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  document.querySelectorAll('.scrollmenu a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const sectionId = this.getAttribute('href').substring(1);
+      const section = document.getElementById(sectionId);
+      if(section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        setActiveNav(sectionId);
+
+        // Disable observer highlight for a short time after click
+        manualNavClick = true;
+        clearTimeout(manualNavTimeout);
+        manualNavTimeout = setTimeout(() => {
+          manualNavClick = false;
+        }, 1000); // 1 second, adjust if needed
+      }
+    });
+  });
+
+  // Intersection Observer for section highlighting
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    const options = {
+      root: null,
+      rootMargin: '-120px 0px 0px 0px', // Adjust for your navbar height
+      threshold: 0.1 // More responsive for small sections
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (manualNavClick) return; // Don't auto-highlight if user just clicked nav
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          setActiveNav(entry.target.id);
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+  </script>
+</body>
+</html>
+
+
